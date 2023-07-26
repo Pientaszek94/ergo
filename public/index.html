@@ -15,6 +15,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -25,10 +26,58 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;600&family=Roboto+Slab:wght@700&display=swap');
+      
+      .preLoad{
+        position: absolute;
+        top:0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        /* background-color: rgb(88 28 135); */
+        background-color: white;
+      }
+      .waiting{
+        color: black;
+        font-size: 1rem;
+        font-family: 'Roboto Slab', serif;
+        text-align: center;
+        /* mix-blend-mode: difference; */
+      }
+
+      .image{
+        width:20vw;
+        max-width: 200px;
+        aspect-ratio: 1/1;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .preLoad{
+          background-color: rgb(88 28 135);
+        }
+        .waiting{
+          background-color: rgb(88 28 135);
+          color: white;
+        }
+
+      }
+
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="preLoad">
+          <img src="./pngegg.png" class="image" alt="pirate rubber duck">
+          <h1 class="waiting">Wait for a Pirate Rubber Duck! He'll open everything in a flash</h1>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;600&family=Roboto+Slab:wght@700&display=swap');
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+// SHORTCUTS of reusable classes--------------------
+
+.flex-center-center{
+    @apply flex flex-col justify-center items-center;
+}
+
+.flex-btw-center{
+    @apply flex flex-row justify-between items-center;
+}
+
+
+// GENERAL -----------------------------------------
+
+    // H1 AS LOGO FONT
+h1{
+    @apply sm:text-2xl md:text-5xl text-black dark:text-pink-400 dark:border-pink-400 border-black md:border-4 border-2 p-1.5 my-2;
+    font-family: 'Roboto Slab', serif;
+}
+
+h2{
+    @apply sm:text-xl md:text-3xl bg-transparent text-center font-bold;
+}
+
+h3{
+    @apply text-left text-black text-gray-400 dark:text-pink-400 font-bold;
+}
+
+h4{
+    @apply text-left text-black dark:text-white;
+}
+h6{
+    @apply text-xs;
+}
+
+*:not(h1, h2, h3, h4, h6, span, .results, input){
+    @apply dark:bg-purple-900 bg-white dark:text-white;
+}
+
+
+// APP and Components------------------------------
+.loading_screen{
+    @apply w-fit h-fit flex-center-center;
+}
+
+.error_screen{
+    @apply container m-auto w-full h-screen flex-center-center;
+    h1{
+        @apply text-center;
+    }
+}
+
+.fake_carousel{
+    @apply overflow-x-scroll relative;
+    width: 100%;
+    height: 300px;
+   max-height: 50vh;
+    .slides_container{
+        @apply flex-btw-center h-full grid grid-cols-4;
+        width:calc(50vw * 4);
+        .slide{
+            @apply w-full h-full bg-center bg-no-repeat bg-cover flex-center-center;
+            & h2{
+                color: white;
+                mix-blend-mode:color-dodge;
+            }
+        }
+    }
+}
+
+
+.user_info{
+    @apply col-span-3 flex-center-center;
+}
+
+
+
+.result_page{
+    .users_rp{
+        @apply grid md:grid-cols-5 grid-cols-3 gap-2 mt-12 mb-10;
+    }
+    .posts_rp{
+        @apply grid md:grid-cols-2 grid-cols-1 gap-2;
+        .post_item{
+            @apply bg-center bg-no-repeat bg-cover h-44 md:h-96 shadow-lg flex-center-center dark:border-purple-600 my-2;
+            .post_title{
+                @apply w-full h-full bg-black text-white flex-center-center bg-opacity-70 text-center;
+                transition: opacity 0.2s ease-in-out;
+                h3{
+                    @apply text-center
+                }
+            &:hover{
+                opacity: 0;
+            }
+            }
+
+        }
+    }
+}
+
+
+.App{
+    @apply w-full min-h-screen flex flex-col justify-between items-center;
+
+    header{
+        @apply top-0 left-0 sticky w-full bg-white shadow-lg z-50;
+
+        nav{
+            @apply w-full h-fit flex-btw-center px-2;
+        }
+        .results{
+            @apply w-full md:w-1/2 h-96 md:mt-2 overflow-y-scroll dark:bg-purple-700 bg-purple-200 shadow-lg absolute md:right-2 p-2;
+            div{
+                @apply dark:bg-purple-700 bg-purple-200;   
+            }
+            .post_item{
+                @apply bg-center bg-no-repeat bg-cover p-2 shadow-lg my-2;
+                .post_title{
+                    @apply bg-opacity-70 p-2;
+                }
+            }
+        }
+    }
+}
+
+
+
+//   PAGINATION STYLES
+
+
+.pagination-container {
+    width: 100%;
+    display: flex;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+  
+    .pagination-item {
+        @apply dark:text-white text-black;
+      padding: 0 12px;
+      height: 32px;
+      text-align: center;
+      margin: auto 4px;
+    //   color: rgba(0, 0, 0, 0.87);
+      
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      letter-spacing: 0.01071em;
+      border-radius: 16px;
+      line-height: 1.43;
+      font-size: 13px;
+      min-width: 32px;
+  
+      &.dots:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+        cursor: pointer;
+      }
+  
+      &.selected {
+        background-color: rgba(0, 0, 0, 0.08);
+      }
+  
+      .arrow {
+        &::before {
+        @apply dark:border-white border-black;
+          position: relative;
+          /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
+          content: '';
+          /* By using an em scale, the arrows will size with the font */
+          display: inline-block;
+          width: 0.4em;
+          height: 0.4em;
+          border-right: 0.12em solid;
+          border-top: 0.12em solid ;
+        }
+  
+        &.left {
+          transform: rotate(-135deg) translate(-50%);
+        }
+  
+        &.right {
+          transform: rotate(45deg);
+        }
+      }
+  
+      &.disabled {
+        pointer-events: none;
+  
+        .arrow::before {
+          border-right: 0.12em solid rgba(255, 255, 255, 0.43);
+          border-top: 0.12em solid rgba(255, 255, 255, 0.43);
+        }
+  
+        &:hover {
+        //   background-color: transparent;
+          cursor: default;
+        }
+      }
+    }
+  }
